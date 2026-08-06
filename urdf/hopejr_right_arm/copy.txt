@@ -1,0 +1,2250 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (5, 0, 0)
+                double radius = 5
+            }
+            dictionary Perspective = {
+                double3 position = (-0.3113182664395894, 0.13318376491551526, -0.39130121273581925)
+                double3 target = (1.0684334761497172, 0.8296697891481069, -0.07995848022732194)
+            }
+            dictionary Right = {
+                double3 position = (0, -5, 0)
+                double radius = 5
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 5)
+                double radius = 5
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./collision.usda"
+            dictionary locked = {
+            }
+            dictionary muteness = {
+            }
+        }
+        dictionary physicsSettings = {
+        }
+        dictionary renderSettings = {
+        }
+    }
+    defaultPrim = "hopejr_right_arm_robot"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "hopejr_right_arm_robot" (
+    variants = {
+        string Physics = "PhysX"
+        string Robot = "Robot"
+        string Sensor = "Sensors"
+    }
+    prepend variantSets = ["Physics", "Sensor", "Robot"]
+)
+{
+    string isaac:namespace (
+        displayName = "Namespace"
+        doc = "Namespace of the prim in Isaac Sim"
+    )
+    token visibility = "inherited"
+
+    over "joints"
+    {
+        over "hand_middle_mcp_2" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0.00007991516
+            float state:angular:physics:velocity = -0.71935606
+        }
+
+        over "hand_index_mcp_1"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+        }
+
+        over "hand_index_mcp_2"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotY:gearing = -1
+            float state:angular:physics:position = 0.0022698194
+            float state:angular:physics:velocity = -1.0680027
+        }
+
+        over "hand_index_pip"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotZ:gearing = -1
+            float state:angular:physics:position = 0.013612931
+            float state:angular:physics:velocity = -0.16586325
+        }
+
+        over "hand_index_dip_1_support" (
+            kind = ""
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            float drive:angular:physics:targetPosition = 0
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = -3.060901e-8
+            float state:angular:physics:velocity = -0.0033052391
+        }
+
+        over "hand_index_dip_1"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = -0.015712254
+            float state:angular:physics:velocity = -0.039286133
+        }
+
+        over "hand_index_dip_2_support" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            rel physxMimicJoint:rotY:referenceJoint = </hopejr_right_arm_robot/joints/hand_index_dip_1_support>
+            float state:angular:physics:position = -2.1877555e-7
+            float state:angular:physics:velocity = -0.0032679331
+        }
+
+        over "hand_index_dip_2"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotY:gearing = -1
+            rel physxMimicJoint:rotY:referenceJoint = </hopejr_right_arm_robot/joints/hand_index_dip_1_support>
+            float state:angular:physics:position = -0.00086307543
+            float state:angular:physics:velocity = -0.0033269299
+        }
+
+        over "hand_middle_pip"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotZ:gearing = -1
+            float state:angular:physics:position = 0.02987028
+            float state:angular:physics:velocity = -0.21322545
+        }
+
+        over "hand_middle_dip_1"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0.10400937
+            float state:angular:physics:velocity = 0.22254735
+        }
+
+        over "hand_middle_dip_2_support" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            rel physxMimicJoint:rotY:referenceJoint = </hopejr_right_arm_robot/joints/hand_middle_dip_1_support>
+            float state:angular:physics:position = -2.3520425e-7
+            float state:angular:physics:velocity = 0.014430994
+        }
+
+        over "hand_middle_dip_2"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotY:gearing = -1
+            rel physxMimicJoint:rotY:referenceJoint = </hopejr_right_arm_robot/joints/hand_middle_dip_1_support>
+            float state:angular:physics:position = 0.0030893185
+            float state:angular:physics:velocity = 0.014964635
+        }
+
+        over "hand_pinky_mcp_2" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:stiffness = 100
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotY:gearing = -1
+            float state:angular:physics:position = -0.00005497728
+            float state:angular:physics:velocity = -0.49410346
+        }
+
+        over "hand_pinky_pip" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotZ:gearing = -1
+            float state:angular:physics:position = 0.074014045
+            float state:angular:physics:velocity = -0.14929323
+        }
+
+        over "hand_pinky_dip_1"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0.103864506
+            float state:angular:physics:velocity = 0.24227954
+        }
+
+        over "hand_pinky_dip_2_support" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotY:gearing = -1
+            rel physxMimicJoint:rotY:referenceJoint = </hopejr_right_arm_robot/joints/hand_pinky_dip_1_support>
+            float state:angular:physics:position = 4.4600048e-7
+            float state:angular:physics:velocity = 0.018385792
+        }
+
+        over "hand_pinky_dip_2"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotY:gearing = -1
+            rel physxMimicJoint:rotY:referenceJoint = </hopejr_right_arm_robot/joints/hand_pinky_dip_1_support>
+            float state:angular:physics:position = 0.0053781373
+            float state:angular:physics:velocity = 0.017324468
+        }
+
+        over "hand_ring_mcp_2"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotY:gearing = -1
+            float state:angular:physics:position = 0.00053504534
+            float state:angular:physics:velocity = -0.9829974
+        }
+
+        over "hand_ring_pip"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotZ:gearing = -1
+            float state:angular:physics:position = 0.05433755
+            float state:angular:physics:velocity = -0.20233895
+        }
+
+        over "hand_ring_dip_1"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = -0.041646965
+            float state:angular:physics:velocity = -0.03568939
+        }
+
+        over "hand_ring_dip_2"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotY:gearing = -1
+            rel physxMimicJoint:rotY:referenceJoint = </hopejr_right_arm_robot/joints/hand_ring_dip_1_support>
+            float state:angular:physics:position = -0.0010117575
+            float state:angular:physics:velocity = 0.0016049544
+        }
+
+        over "hand_thumb_mcp_2"
+        {
+            float drive:angular:physics:maxForce = 10000
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = -2.4636734
+            float state:angular:physics:velocity = 0.07455034
+        }
+
+        over "hand_ring_dip_2_support" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            rel physxMimicJoint:rotY:referenceJoint = </hopejr_right_arm_robot/joints/hand_ring_dip_1_support>
+            float state:angular:physics:position = 5.4629703e-7
+            float state:angular:physics:velocity = 0.0015204158
+        }
+
+        over "hand_thumb_pip_1_support" (
+            kind = ""
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            float drive:angular:physics:targetPosition = 0
+            string isaac:nameOverride = "hand_thumb_pip_1_support" (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0.0016959993
+            float state:angular:physics:velocity = 0.73885393
+        }
+
+        over "hand_thumb_pip_1"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotY:gearing = -1
+            float state:angular:physics:position = -4.657494
+            float state:angular:physics:velocity = 0.96579343
+        }
+
+        over "hand_thumb_pip_2_support" (
+            kind = ""
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            float drive:angular:physics:targetPosition = 0
+            string isaac:nameOverride = "hand_thumb_pip_2_support" (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = -0.0009911836
+            float state:angular:physics:velocity = 4.053493
+        }
+
+        over "hand_thumb_pip_2"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotY:gearing = -1
+            float state:angular:physics:position = -5.034477
+            float state:angular:physics:velocity = 3.6830847
+        }
+
+        over "hand_thumb_dip_support" (
+            kind = ""
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            float drive:angular:physics:targetPosition = 0
+            string isaac:nameOverride = "hand_thumb_dip_support" (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0.000008185496
+            float state:angular:physics:velocity = -0.01574545
+        }
+
+        over "hand_thumb_dip"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotY:gearing = -1
+            float state:angular:physics:position = -0.30114666
+            float state:angular:physics:velocity = -0.57993144
+        }
+
+        over "shoulder_pitch"
+        {
+            float drive:angular:physics:maxForce = 100000000000000
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = -0.01144433
+            float state:angular:physics:velocity = -0.006625168
+        }
+
+        over "shoulder_yaw"
+        {
+            float drive:angular:physics:maxForce = 100000
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0.001495663
+            float state:angular:physics:velocity = 0.14730507
+        }
+
+        over "shoulder_roll"
+        {
+            float drive:angular:physics:maxForce = 100000
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = -0.0052928934
+            float state:angular:physics:velocity = 0.040471528
+        }
+
+        over "elbow_flex"
+        {
+            float drive:angular:physics:maxForce = 100000
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = -0.0041262256
+            float state:angular:physics:velocity = 0.6026106
+        }
+
+        over "wrist_roll"
+        {
+            float drive:angular:physics:maxForce = 100000
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0.00030632343
+            float state:angular:physics:velocity = 0.08600668
+        }
+
+        over "wrist_yaw"
+        {
+            float drive:angular:physics:maxForce = 100000
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = -0.004640107
+            float state:angular:physics:velocity = 0.016416512
+        }
+
+        over "hand_wrist_pitch"
+        {
+            float drive:angular:physics:maxForce = 100000
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0.0036211968
+            float state:angular:physics:velocity = 1.6765115
+        }
+
+        over "hand_index_mcp_2_support"
+        {
+            float drive:angular:physics:maxForce = 10000
+            string isaac:nameOverride = "hand_index_mcp_2_support" (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0.00049494393
+            float state:angular:physics:velocity = -0.18853255
+        }
+
+        over "hand_middle_mcp_2_support"
+        {
+            float drive:angular:physics:maxForce = 10000
+            string isaac:nameOverride = "hand_middle_mcp_2_support" (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0.003389532
+            float state:angular:physics:velocity = -0.39745465
+        }
+
+        over "hand_pinky_mcp_2_support"
+        {
+            float drive:angular:physics:maxForce = 10000
+            string isaac:nameOverride = "hand_pinky_mcp_2_support" (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0.012242214
+            float state:angular:physics:velocity = -0.5288567
+        }
+
+        over "hand_ring_mcp_2_support"
+        {
+            float drive:angular:physics:maxForce = 10000
+            string isaac:nameOverride = "hand_ring_mcp_2_support" (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = -0.00028567258
+            float state:angular:physics:velocity = -0.00184209
+        }
+
+        over "hand_index_pip_support" (
+            kind = ""
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            float drive:angular:physics:targetPosition = 0
+            string isaac:nameOverride = "hand_index_pip_support" (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = -0.000008503182
+            float state:angular:physics:velocity = -0.10350775
+        }
+
+        over "hand_middle_pip_support" (
+            kind = ""
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            float drive:angular:physics:targetPosition = 0
+            string isaac:nameOverride = "hand_middle_pip_support" (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0.00008370719
+            float state:angular:physics:velocity = -0.09658847
+        }
+
+        over "hand_pinky_pip_support" (
+            kind = ""
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            float drive:angular:physics:targetPosition = 0
+            string isaac:nameOverride = "hand_pinky_pip_support" (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0.00021265128
+            float state:angular:physics:velocity = -0.019593205
+        }
+
+        over "hand_ring_pip_support" (
+            kind = ""
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            float drive:angular:physics:targetPosition = 0
+            string isaac:nameOverride = "hand_ring_pip_support" (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0.000027833532
+            float state:angular:physics:velocity = -0.058804687
+        }
+
+        over "hand_middle_dip_1_support" (
+            kind = ""
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            float drive:angular:physics:targetPosition = 0
+            string isaac:nameOverride = "hand_middle_dip_1_support" (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0.0000013759421
+            float state:angular:physics:velocity = 0.015013293
+        }
+
+        over "hand_pinky_dip_1_support" (
+            kind = ""
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            float drive:angular:physics:targetPosition = 0
+            string isaac:nameOverride = "hand_pinky_dip_1_support" (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 2.1367964e-7
+            float state:angular:physics:velocity = 0.017404728
+        }
+
+        over "hand_ring_dip_1_support" (
+            kind = ""
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            float drive:angular:physics:targetPosition = 0
+            string isaac:nameOverride = "hand_ring_dip_1_support" (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0.0000026205141
+            float state:angular:physics:velocity = 1.1464246e-7
+        }
+
+        over "hand_middle_mcp_1"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+        }
+
+        over "base_link_fixed"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+        }
+
+        over "hand_pinky_mcp_1"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+        }
+    }
+
+    over "base_footprint"
+    {
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (0, 0, 0)
+        vector3f physics:velocity = (0, 0, 0)
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:translate = (0, 0, 0)
+
+        over "visuals" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "base_link"
+    {
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (0, 0, 0)
+        vector3f physics:velocity = (0, 0, 0)
+        quatd xformOp:orient = (-4.3706677327167484e-8, -1.455191522836684e-11, 0.999999999999999, -1.4901161193847641e-8)
+        double3 xformOp:translate = (1.862645149230957e-9, 9.085874275172046e-10, 0)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "shoulder_yaw"
+    {
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (-1.0678292e-10, -0.0066251666, 1.8554818e-9)
+        vector3f physics:velocity = (0, 0, 0)
+        quatd xformOp:orient = (0.7071772985395988, -3.818422555978421e-8, 0.7070362568003378, -2.7939677238866508e-8)
+        double3 xformOp:translate = (-1.862645149230957e-9, 0.07105997204780579, -0.04453001171350479)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "shoulder_roll"
+    {
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (0.000028440756, -0.006625197, -0.14730507)
+        vector3f physics:velocity = (0.00006967421, -4.6819153e-9, 1.39090295e-8)
+        quatd xformOp:orient = (0.500056394565433, -0.500043465418452, 0.4999565618440001, 0.49994356803108503)
+        double3 xformOp:translate = (1.280568540096283e-8, 0.12690997123718262, -0.04453001171350479)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "upper_elbow"
+    {
+        vector3f physics:angularVelocity = (0.000030252872, 0.033846308, -0.14730509)
+        vector3f physics:velocity = (0.00031107408, -1.596404e-8, 6.301427e-8)
+        quatd xformOp:orient = (0.5000794917483671, -0.5000664192410659, 0.499933530680313, 0.49992053686724086)
+        double3 xformOp:translate = (0.0000023095938104233937, 0.2153099626302719, -0.04453003406524658)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "lower_elbow"
+    {
+        vector3f physics:angularVelocity = (0.60264075, 0.033807095, -0.1471401)
+        vector3f physics:velocity = (0.0005795336, -0.00021042199, 0.00029458493)
+        quatd xformOp:orient = (-0.5000614754312486, 0.5000844047848036, -0.49995148642572956, -0.4999026106165633)
+        double3 xformOp:translate = (0.000016222647900576703, 0.32841992378234863, -0.08218003809452057)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "forearm"
+    {
+        vector3f physics:angularVelocity = (0.60261714, 0.033797685, -0.06113347)
+        vector3f physics:velocity = (0.00050019874, 0.00045480486, 0.0002946304)
+        quatd xformOp:orient = (-0.5000601045742197, 0.5000857160969923, -0.4999501751335216, -0.49990398153339416)
+        double3 xformOp:translate = (0.00003466770431259647, 0.3284154236316681, -0.14543002843856812)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_base_link"
+    {
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (0.60261846, 0.05021417, -0.061125085)
+        vector3f physics:velocity = (0.00045184576, 0.0014194726, 0.00029483932)
+        quatd xformOp:orient = (-0.5000803021598963, 0.5001059203938378, -0.4999299972837488, -0.4998837440791313)
+        double3 xformOp:translate = (-0.0001485952379880473, 0.3284088373184204, -0.2371300756931305)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_hand"
+    {
+        vector3f physics:angularVelocity = (-1.0738928, 0.05026976, -0.061687883)
+        vector3f physics:velocity = (0.00037825273, 0.0019526614, 0.0000073299607)
+        quatd xformOp:orient = (0.00008408791352110121, -0.7070993763025458, 0.707114158255658, -0.00017932140337172393)
+        double3 xformOp:translate = (-0.008060460910201073, 0.3284068703651428, -0.267020046710968)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_index_mcp_1"
+    {
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (-1.0738928, 0.05026976, -0.061687883)
+        vector3f physics:velocity = (0.00029559305, 0.00037999643, 0.00016478573)
+        quatd xformOp:orient = (0.47999510479148394, -0.47546526382224474, 0.5243375585085532, 0.5182736796442062)
+        double3 xformOp:translate = (-0.03370581939816475, 0.3212346136569977, -0.3524036407470703)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_index_mcp_2_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_index_mcp_2_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (-0.88608706, 0.048264027, -0.07810456)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        uniform bool physics:startsAsleep = 0
+        vector3f physics:velocity = (0.00029559305, 0.00037999643, 0.00016478573)
+        bool physxRigidBody:disableGravity = 1
+        quatd xformOp:orient = (0.4799927513414652, -0.47546755725517587, 0.5243396699258811, 0.5182716191336978)
+        double3 xformOp:translate = (-0.03370581939816475, 0.3212346136569977, -0.3524036407470703)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_index_mcp_2"
+    {
+        vector3f physics:angularVelocity = (0.1777957, 0.036834702, -0.17112206)
+        vector3f physics:velocity = (0.00028281065, 0.00014762521, 0.00016625208)
+        quatd xformOp:orient = (0.47998245024850006, -0.47547773459670345, 0.5243491633300336, 0.5182622176768501)
+        double3 xformOp:translate = (-0.03502936288714409, 0.32121819257736206, -0.3675459027290344)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_index_pip_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_index_pip_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (0.17670311, -0.06666702, -0.17091067)
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        vector3f physics:velocity = (0.00029537306, 0.000082225975, 0.00016522653)
+        bool physxRigidBody:disableGravity = 1
+        quatd xformOp:orient = (0.47998249225526296, -0.47547770109235277, 0.5243491592474969, 0.5182622136417057)
+        double3 xformOp:translate = (-0.03333021327853203, 0.32124003767967224, -0.3481065332889557)
+
+        over "visuals" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_index_pip"
+    {
+        vector3f physics:angularVelocity = (0.17495282, -0.23252067, -0.17057142)
+        vector3f physics:velocity = (0.00034565042, 0.00022717165, 0.00016066973)
+        quatd xformOp:orient = (0.47992083328665563, -0.4754154664518684, 0.5244056234258666, 0.5183192743426804)
+        double3 xformOp:translate = (-0.03711799904704094, 0.32119137048721313, -0.391441285610199)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_index_dip_1_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_index_dip_1_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (0.17824522, -0.23255588, -0.17086025)
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        vector3f physics:velocity = (0.00033388275, 0.00021755279, 0.00016171197)
+        bool physxRigidBody:disableGravity = 1
+        quatd xformOp:orient = (0.4799209821913561, -0.4754154569888335, 0.5244055595251294, 0.5183192098000214)
+        double3 xformOp:translate = (-0.03686363995075226, 0.3211946189403534, -0.38853922486305237)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_index_dip_1"
+    {
+        vector3f physics:angularVelocity = (0.21737914, -0.23297612, -0.17428969)
+        vector3f physics:velocity = (0.00039529116, 0.000268617, 0.00015627197)
+        quatd xformOp:orient = (0.47999278011457625, -0.4753444436463553, 0.5243397888964195, 0.5183843908842892)
+        double3 xformOp:translate = (-0.03819078579545021, 0.3211776614189148, -0.4036811590194702)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_index_dip_2_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_index_dip_2_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (0.2206344, -0.23301099, -0.17457525)
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        vector3f physics:velocity = (0.000438201, 0.00031149524, 0.00015247466)
+        bool physxRigidBody:disableGravity = 1
+        quatd xformOp:orient = (0.47999279738060596, -0.47534441747504746, 0.524339792901695, 0.5183843948440732)
+        double3 xformOp:translate = (-0.0391162633895874, 0.3211687207221985, -0.41424068808555603)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_index_dip_2"
+    {
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (0.22394846, -0.23304626, -0.1748659)
+        vector3f physics:velocity = (0.0004997414, 0.0003738479, 0.00014702781)
+        quatd xformOp:orient = (0.4799968314994472, -0.4753405344447397, 0.5243361206598298, 0.5183879345004866)
+        double3 xformOp:translate = (-0.04044336453080177, 0.3211559057235718, -0.4293826222419739)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_middle_mcp_1"
+    {
+        vector3f physics:angularVelocity = (-1.0738928, 0.05026976, -0.061687883)
+        vector3f physics:velocity = (0.00029895015, 0.00032430084, 0.00006095509)
+        quatd xformOp:orient = (0.5013988074855362, -0.4962434960442415, 0.5042563568860797, 0.4980634046242)
+        double3 xformOp:translate = (-0.015803376212716103, 0.3259371817111969, -0.35434460639953613)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_middle_mcp_2_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_middle_mcp_2_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (-0.6764682, 0.045757066, -0.06355459)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        uniform bool physics:startsAsleep = 0
+        vector3f physics:velocity = (0.00029895015, 0.00032430084, 0.00006095509)
+        bool physxRigidBody:disableGravity = 1
+        quatd xformOp:orient = (0.5013840950335733, -0.49625806501989145, 0.5042711050864801, 0.4980487674163427)
+        double3 xformOp:translate = (-0.015803376212716103, 0.3259371817111969, -0.35434460639953613)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_middle_mcp_2"
+    {
+        vector3f physics:angularVelocity = (0.042833295, 0.037577208, -0.06694177)
+        vector3f physics:velocity = (0.00028678903, 0.00014492242, 0.00006127153)
+        quatd xformOp:orient = (0.5013837038122055, -0.4962584042806054, 0.5042713844459769, 0.49804854036665913)
+        double3 xformOp:translate = (-0.015874572098255157, 0.3259209096431732, -0.3695444166660309)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_middle_pip_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_middle_pip_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (0.04173597, -0.05900495, -0.066833615)
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        vector3f physics:velocity = (0.00029961113, 0.00013022713, 0.000061226645)
+        bool physxRigidBody:disableGravity = 1
+        quatd xformOp:orient = (0.5013834973632592, -0.4962580945022343, 0.5042716412031517, 0.49804879689753095)
+        double3 xformOp:translate = (-0.015783170238137245, 0.325941801071167, -0.35003113746643066)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_middle_pip"
+    {
+        vector3f physics:angularVelocity = (0.039313916, -0.27221644, -0.06659452)
+        vector3f physics:velocity = (0.00034435396, 0.00016215134, 0.000060982966)
+        quatd xformOp:orient = (0.501253570038345, -0.4961266809943489, 0.5044009972754928, 0.49817949463705724)
+        double3 xformOp:translate = (-0.015986962243914604, 0.325895220041275, -0.39353060722351074)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_middle_dip_1_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_middle_dip_1_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (0.024301795, -0.27204585, -0.06651657)
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        vector3f physics:velocity = (0.0003305171, 0.0001601348, 0.00006105727)
+        bool physxRigidBody:disableGravity = 1
+        quatd xformOp:orient = (0.501253733858719, -0.49612660583518786, 0.5044009824556388, 0.4981794196601612)
+        double3 xformOp:translate = (-0.015971794724464417, 0.32589831948280334, -0.3906174600124359)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_middle_dip_1"
+    {
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (-0.19822803, -0.26951626, -0.0653596)
+        vector3f physics:velocity = (0.00040266832, 0.00016667385, 0.000060673894)
+        quatd xformOp:orient = (0.5007956762155871, -0.4965786067151748, 0.5048557547690635, 0.4977288869587016)
+        double3 xformOp:translate = (-0.016050929203629494, 0.3258821368217468, -0.4058172404766083)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_middle_dip_2_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_middle_dip_2_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (-0.21265797, -0.26935226, -0.065284654)
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        vector3f physics:velocity = (0.0004524946, 0.00013006484, 0.00006051817)
+        bool physxRigidBody:disableGravity = 1
+        quatd xformOp:orient = (0.500795635399171, -0.49657861043167906, 0.5048557585475156, 0.49772892048613765)
+        double3 xformOp:translate = (-0.01610633358359337, 0.3258516192436218, -0.41641706228256226)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_middle_dip_2"
+    {
+        vector3f physics:angularVelocity = (-0.22762145, -0.26918218, -0.065206975)
+        vector3f physics:velocity = (0.0005238995, 0.00007374059, 0.000060306433)
+        quatd xformOp:orient = (0.5007821681279603, -0.4965919743326571, 0.5048691226561821, 0.49771558153410267)
+        double3 xformOp:translate = (-0.016185784712433815, 0.3258078396320343, -0.43161678314208984)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_pinky_mcp_1"
+    {
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (-1.0738928, 0.05026976, -0.061687883)
+        vector3f physics:velocity = (0.000292035, 0.000467879, 0.00029834488)
+        quatd xformOp:orient = (0.6242120436520536, -0.5303844278226283, 0.46197733846948486, 0.340042088606162)
+        double3 xformOp:translate = (0.02346200682222843, 0.31143078207969666, -0.3444320261478424)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_pinky_mcp_2_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_pinky_mcp_2_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (-0.59021306, -0.05871424, 0.122337736)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        uniform bool physics:startsAsleep = 0
+        vector3f physics:velocity = (0.000292035, 0.000467879, 0.00029834488)
+        bool physxRigidBody:disableGravity = 1
+        quatd xformOp:orient = (0.6241627376304215, -0.5304207259585847, 0.4620439755109215, 0.33998543368992856)
+        double3 xformOp:translate = (0.02346200682222843, 0.31143078207969666, -0.3444320261478424)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_pinky_mcp_2"
+    {
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (-0.13831612, -0.16048704, 0.29429653)
+        vector3f physics:velocity = (0.0003087731, 0.00033219176, 0.0003140185)
+        quatd xformOp:orient = (0.6241628408565313, -0.530420659966336, 0.4620437613304898, 0.3399856382119024)
+        double3 xformOp:translate = (0.028658131137490273, 0.31043148040771484, -0.3586812913417816)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_pinky_pip_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_pinky_pip_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (-0.142547, -0.17961693, 0.29409593)
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        vector3f physics:velocity = (0.0002509421, 0.00034208526, 0.00029223374)
+        bool physxRigidBody:disableGravity = 1
+        quatd xformOp:orient = (0.6241623229183063, -0.5304198270649683, 0.4620446269599272, 0.3399867120977741)
+        double3 xformOp:translate = (0.0219874270260334, 0.3117143511772156, -0.34038832783699036)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_pinky_pip" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+    )
+    {
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (-0.17480026, -0.32537642, 0.29256022)
+        vector3f physics:velocity = (0.0003934653, 0.00031696953, 0.0003459756)
+        bool physxRigidBody:disableGravity = 0
+        quatd xformOp:orient = (0.6239426456014664, -0.530121269551536, 0.46238711712669284, 0.34038973028600145)
+        double3 xformOp:translate = (0.036857783794403076, 0.3088546097278595, -0.38116753101348877)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_pinky_dip_1_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_pinky_dip_1_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (-0.19072612, -0.32178897, 0.28652528)
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        vector3f physics:velocity = (0.00037697455, 0.0003202378, 0.00033975762)
+        bool physxRigidBody:disableGravity = 1
+        quatd xformOp:orient = (0.6239426218684128, -0.5301213321936838, 0.4623871197760907, 0.34038967263172987)
+        double3 xformOp:translate = (0.03586535528302193, 0.30904534459114075, -0.3784352242946625)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_pinky_dip_1" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+    )
+    {
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (-0.4124195, -0.27185005, 0.20251633)
+        vector3f physics:velocity = (0.00046201993, 0.00029867704, 0.0003721536)
+        bool physxRigidBody:disableGravity = 0
+        quatd xformOp:orient = (0.6235232682941133, -0.5304296044767668, 0.46295246726926703, 0.339909078489743)
+        double3 xformOp:translate = (0.0410434752702713, 0.30805012583732605, -0.39269134402275085)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_pinky_dip_2_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_pinky_dip_2_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (-0.42924306, -0.26806048, 0.19614094)
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        vector3f physics:velocity = (0.0005117108, 0.00023986366, 0.0003943982)
+        bool physxRigidBody:disableGravity = 1
+        quatd xformOp:orient = (0.6235232461527125, -0.5304296076665346, 0.4629524700532575, 0.3399091103361277)
+        double3 xformOp:translate = (0.0446503721177578, 0.30733734369277954, -0.40263327956199646)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_pinky_dip_2" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+    )
+    {
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (-0.4450955, -0.26448965, 0.19013369)
+        vector3f physics:velocity = (0.00058190926, 0.0001507655, 0.00042625473)
+        bool physxRigidBody:disableGravity = 0
+        quatd xformOp:orient = (0.6235015762597567, -0.5304455839442456, 0.46298161867364596, 0.33988422682727987)
+        double3 xformOp:translate = (0.049822527915239334, 0.30631521344184875, -0.41688963770866394)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_ring_mcp_1"
+    {
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (-1.0738928, 0.05026976, -0.061687883)
+        vector3f physics:velocity = (0.0002939514, 0.00033563105, 0.00015721278)
+        quatd xformOp:orient = (0.5638311406139679, -0.5102195212961473, 0.4949670203166199, 0.42044991825563377)
+        double3 xformOp:translate = (0.0052151912823319435, 0.31981727480888367, -0.3525339365005493)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_ring_mcp_2_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_ring_mcp_2_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (-1.072089, 0.050046504, -0.061388906)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        uniform bool physics:startsAsleep = 0
+        vector3f physics:velocity = (0.0002939514, 0.00033563105, 0.00015721278)
+        bool physxRigidBody:disableGravity = 1
+        quatd xformOp:orient = (0.5638323307783106, -0.5102185160568893, 0.49496565720914293, 0.4204511467760849)
+        double3 xformOp:translate = (0.0052151912823319435, 0.31981727480888367, -0.3525339365005493)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_ring_mcp_2"
+    {
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (-0.10952472, -0.07357928, 0.095042594)
+        vector3f physics:velocity = (0.00028033863, 0.00005231028, 0.0001640058)
+        quatd xformOp:orient = (0.5638299341140727, -0.5102204563446717, 0.49496825394516, 0.42044894923264475)
+        double3 xformOp:translate = (0.007593374699354172, 0.3193467855453491, -0.3675393760204315)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_ring_pip_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_ring_pip_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (-0.117114656, -0.13188873, 0.095668726)
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        vector3f physics:velocity = (0.00025459786, 0.000084069456, 0.00015892996)
+        bool physxRigidBody:disableGravity = 1
+        quatd xformOp:orient = (0.5638299730472964, -0.510220299575505, 0.4949683051332619, 0.4204490270033614)
+        double3 xformOp:translate = (0.004540327470749617, 0.31995096802711487, -0.34827566146850586)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_ring_pip"
+    {
+        vector3f physics:angularVelocity = (-0.14323173, -0.33252347, 0.09782186)
+        vector3f physics:velocity = (0.00035569732, 0.000007658506, 0.00017735243)
+        quatd xformOp:orient = (0.5636304768573013, -0.5099856112266115, 0.495210186451515, 0.4207163333340967)
+        double3 xformOp:translate = (0.011346245184540749, 0.31860411167144775, -0.39121881127357483)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_ring_dip_1_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_ring_dip_1_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (-0.14323182, -0.33252344, 0.09782201)
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        vector3f physics:velocity = (0.00033885057, 0.000014075435, 0.00017449839)
+        bool physxRigidBody:disableGravity = 1
+        quatd xformOp:orient = (0.5636305389214913, -0.5099855685982823, 0.4952101731336661, 0.420716317536509)
+        double3 xformOp:translate = (0.010893156751990318, 0.31869396567344666, -0.3883424699306488)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_ring_dip_1"
+    {
+        vector3f physics:angularVelocity = (-0.108278766, -0.33701342, 0.10346604)
+        vector3f physics:velocity = (0.00042675048, -0.000019405685, 0.00018938971)
+        quatd xformOp:orient = (0.5638104178432619, -0.5098326732769765, 0.4950053624400836, 0.42090159080979916)
+        double3 xformOp:translate = (0.013257202692329884, 0.3182251453399658, -0.40335017442703247)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_ring_dip_2_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_ring_dip_2_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (-0.10976784, -0.336822, 0.10322593)
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        vector3f physics:velocity = (0.00048888766, -0.00003620558, 0.00019969571)
+        bool physxRigidBody:disableGravity = 1
+        quatd xformOp:orient = (0.5638104413314738, -0.509832693156344, 0.49500535193898243, 0.4209015476169246)
+        double3 xformOp:translate = (0.0149068059399724, 0.31790584325790405, -0.4138161540031433)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_ring_dip_2"
+    {
+        vector3f physics:angularVelocity = (-0.111339726, -0.3366199, 0.102972336)
+        vector3f physics:velocity = (0.0005779385, -0.00006069598, 0.00021447809)
+        quatd xformOp:orient = (0.5638148077320724, -0.5098289914906177, 0.495000368953041, 0.4209060426675522)
+        double3 xformOp:translate = (0.01727227307856083, 0.3174479901790619, -0.42882397770881653)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_thumb_mcp_2"
+    {
+        vector3f physics:angularVelocity = (-1.0740287, 0.08328643, 0.005152474)
+        vector3f physics:velocity = (0.0003518709, 0.0018746684, 0.0004030561)
+        quatd xformOp:orient = (0.94528530653548, -0.22037236012149558, -0.055548536594618995, -0.23406424807048531)
+        double3 xformOp:translate = (-0.036676712334156036, 0.3086346685886383, -0.27283263206481934)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_thumb_pip_1_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_thumb_pip_1_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (-0.3939175, 0.3719746, 0.0015393973)
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        vector3f physics:velocity = (0.00032770837, 0.0015453685, 0.0006894751)
+        bool physxRigidBody:disableGravity = 1
+        quatd xformOp:orient = (-0.19330233948027467, 0.7795520883131181, -0.5169846719448155, -0.2960736329567716)
+        double3 xformOp:translate = (-0.02676445245742798, 0.2925923764705658, -0.2904520630836487)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_thumb_pip_1"
+    {
+        vector3f physics:angularVelocity = (0.49509054, 0.7493329, -0.0031989764)
+        vector3f physics:velocity = (0.00026272263, 0.001476374, 0.00073313713)
+        quatd xformOp:orient = (-0.17213607234261896, 0.7909386216762894, -0.5244121590481905, -0.2641536613066032)
+        double3 xformOp:translate = (-0.022354409098625183, 0.2820805311203003, -0.3005065321922302)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_thumb_pip_2_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_thumb_pip_2_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (4.2263083, 2.3331301, -0.02307204)
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        vector3f physics:velocity = (0.00013074443, 0.0015628178, 0.000557574)
+        bool physxRigidBody:disableGravity = 1
+        quatd xformOp:orient = (-0.1721316045313086, 0.7909408964886304, -0.5244136356004464, -0.26414682996311145)
+        double3 xformOp:translate = (-0.017139200121164322, 0.26967179775238037, -0.31055963039398193)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_thumb_pip_2"
+    {
+        vector3f physics:angularVelocity = (7.6165686, 3.7721992, -0.04110649)
+        vector3f physics:velocity = (-0.00024404677, 0.0022315937, -0.0004628937)
+        quatd xformOp:orient = (-0.1489332744224309, 0.8017789502659854, -0.5314676221478359, -0.22915401215931697)
+        double3 xformOp:translate = (-0.012420612387359142, 0.2584446966648102, -0.31965509057044983)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_thumb_dip_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_thumb_dip_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        vector3f physics:angularVelocity = (7.6020756, 3.7660477, -0.041030638)
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        vector3f physics:velocity = (-0.0006939428, 0.0031223458, -0.0020755953)
+        bool physxRigidBody:disableGravity = 1
+        quatd xformOp:orient = (-0.14893333346661758, 0.8017789597677375, -0.5314675882560135, -0.22915401914350755)
+        double3 xformOp:translate = (-0.008195830509066582, 0.24840973317623138, -0.32638493180274963)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_thumb_dip"
+    {
+        vector3f physics:angularVelocity = (7.0682516, 3.5394554, -0.038153607)
+        vector3f physics:velocity = (-0.0012273216, 0.0041781007, -0.0039871256)
+        quatd xformOp:orient = (-0.14753609230991432, 0.8023784115349157, -0.5318571500069577, -0.22704615864423372)
+        double3 xformOp:translate = (-0.0031789024360477924, 0.23649321496486664, -0.33437660336494446)
+
+        over "visuals" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+
+        over "collisions" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxTriangleMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "root_joint"
+    {
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+    variantSet "Physics" = {
+        "None" (
+            prepend references = @./configuration/hopejr_right_arm_base.usd@
+        ) {
+            over "joints" (
+                active = false
+            )
+            {
+            }
+
+        }
+        "PhysX" (
+            prepend payload = @./configuration/hopejr_right_arm_physics.usd@
+        ) {
+
+        }
+    }
+    variantSet "Sensor" = {
+        "None" {
+
+        }
+        "Sensors" (
+            prepend payload = @./configuration/hopejr_right_arm_sensor.usd@
+        ) {
+
+        }
+    }
+    variantSet "Robot" = {
+        "None" {
+
+        }
+        "Robot" (
+            prepend payload = @./configuration/hopejr_right_arm_robot.usd@
+        ) {
+
+        }
+    }
+}
+
+def "Render" (
+    hide_in_stage_window = true
+    no_delete = true
+)
+{
+    def "OmniverseKit"
+    {
+        def "HydraTextures" (
+            hide_in_stage_window = true
+            no_delete = true
+        )
+        {
+            def RenderProduct "omni_kit_widget_viewport_ViewportTexture_0" (
+                prepend apiSchemas = ["OmniRtxSettingsCommonAdvancedAPI_1", "OmniRtxSettingsRtAdvancedAPI_1", "OmniRtxSettingsPtAdvancedAPI_1", "OmniRtxPostColorGradingAPI_1", "OmniRtxPostChromaticAberrationAPI_1", "OmniRtxPostBloomPhysicalAPI_1", "OmniRtxPostMatteObjectAPI_1", "OmniRtxPostCompositingAPI_1", "OmniRtxPostDofAPI_1", "OmniRtxPostMotionBlurAPI_1", "OmniRtxPostTvNoiseAPI_1", "OmniRtxPostTonemapIrayReinhardAPI_1", "OmniRtxPostDebugSettingsAPI_1", "OmniRtxDebugSettingsAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                rel camera = </OmniverseKit_Persp>
+                token omni:rtx:background:source:texture:textureMode = "repeatMirrored"
+                token omni:rtx:background:source:type = "domeLight"
+                bool omni:rtx:dlss:frameGeneration = 0
+                bool omni:rtx:material:db:nonVisualMaterialCSV:enabled = 0
+                bool omni:rtx:material:db:syncLoads = 1
+                token omni:rtx:post:dlss:execMode = "performance"
+                bool omni:rtx:post:registeredCompositing:invertColorCorrection = 1
+                bool omni:rtx:post:registeredCompositing:invertToneMap = 1
+                bool omni:rtx:pt:lightcache:cached:dontResolveConflicts = 1
+                int omni:rtx:pt:maxSamplesPerLaunch = 2073600
+                int omni:rtx:pt:mgpu:maxPixelsPerRegionExponent = 12
+                color3f omni:rtx:rt:ambientLight:color = (0.1, 0.1, 0.1)
+                bool omni:rtx:rt:demoire = 0
+                bool omni:rtx:rt:ecoMode:enabled
+                bool omni:rtx:rt:lightcache:spatialCache:dontResolveConflicts = 1
+                bool omni:rtx:scene:hydra:materialSyncLoads = 1
+                bool omni:rtx:scene:hydra:mdlMaterialWarmup = 1
+                uint omni:rtx:viewTile:limit = 4294967295
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (1280, 720)
+            }
+        }
+    }
+
+    def RenderSettings "OmniverseGlobalRenderSettings" (
+        prepend apiSchemas = ["OmniRtxSettingsGlobalRtAdvancedAPI_1", "OmniRtxSettingsGlobalPtAdvancedAPI_1"]
+        no_delete = true
+    )
+    {
+        rel products = </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_0>
+    }
+
+    def "Vars"
+    {
+        def RenderVar "LdrColor" (
+            hide_in_stage_window = true
+            no_delete = true
+        )
+        {
+            uniform string sourceName = "LdrColor"
+        }
+    }
+}
+

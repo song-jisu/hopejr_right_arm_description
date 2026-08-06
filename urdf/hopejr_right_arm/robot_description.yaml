@@ -1,0 +1,46 @@
+api_version: 1.0
+
+robot_name: hopejr
+root_link: base_footprint
+end_effector_link: hand_palm
+
+# -------------------------------
+# Arm IK Chain (7 DOF)
+# -------------------------------
+cspace:
+  - shoulder_pitch
+  - shoulder_yaw
+  - shoulder_roll
+  - elbow_flex
+  - wrist_roll
+  - wrist_yaw
+  - hand_wrist_pitch
+
+default_q: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+# RMPFlow needs collision spheres to build its internal graph
+collision_spheres:
+  - base_link:
+    - center: [0.0, 0.0, 0.0]
+      radius: 0.1
+  - shoulder_yaw_link:
+    - center: [0.0, 0.0, 0.0]
+      radius: 0.1
+  - shoulder_roll_link:
+    - center: [0.0, 0.0, 0.0]
+      radius: 0.1
+  - upper_elbow:
+    - center: [0.0, 0.0, 0.0]
+      radius: 0.08
+  - lower_elbow:
+    - center: [0.0, 0.0, 0.0]
+      radius: 0.08
+  - forearm:
+    - center: [0.0, 0.0, 0.0]
+      radius: 0.06
+  - hand_hand:
+    - center: [0.0, 0.0, 0.0]
+      radius: 0.05
+  - hand_palm:
+    - center: [0.0, 0.0, 0.0]
+      radius: 0.02

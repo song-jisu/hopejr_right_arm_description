@@ -1,0 +1,1362 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (5, 0, 0)
+                double radius = 5
+            }
+            dictionary Perspective = {
+                double3 position = (0.29335987440162364, 0.23541076178911347, -0.38881928585325504)
+                double3 target = (-1.1349300473611954, 0.38602716759367706, -0.22917882377526197)
+            }
+            dictionary Right = {
+                double3 position = (0, -5, 0)
+                double radius = 5
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 5)
+                double radius = 5
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./hopejr_right_arm.usd"
+            dictionary locked = {
+            }
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+        }
+    }
+    defaultPrim = "hopejr_right_arm_robot"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "hopejr_right_arm_robot" (
+    variants = {
+        string Physics = "PhysX"
+        string Robot = "Robot"
+        string Sensor = "Sensors"
+    }
+    prepend variantSets = ["Physics", "Sensor", "Robot"]
+)
+{
+    token visibility = "inherited"
+
+    over "joints"
+    {
+        over "hand_middle_mcp_2" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_index_mcp_1"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+        }
+
+        over "hand_index_mcp_2"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotY:gearing = -1
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_index_pip"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotZ:gearing = -1
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_index_dip_1_support" (
+            kind = ""
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            float drive:angular:physics:targetPosition = 0
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_index_dip_1"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_index_dip_2_support" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            rel physxMimicJoint:rotY:referenceJoint = </hopejr_right_arm_robot/joints/hand_index_dip_1_support>
+            float state:angular:physics:position = 0.000023573277
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_index_dip_2"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotY:gearing = -1
+            rel physxMimicJoint:rotY:referenceJoint = </hopejr_right_arm_robot/joints/hand_index_dip_1_support>
+            float state:angular:physics:position = -0.0019386057
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_middle_pip"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotZ:gearing = -1
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_middle_dip_1"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_middle_dip_2_support" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            rel physxMimicJoint:rotY:referenceJoint = </hopejr_right_arm_robot/joints/hand_middle_dip_1_support>
+            float state:angular:physics:position = 0.0000035315793
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_middle_dip_2"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotY:gearing = -1
+            rel physxMimicJoint:rotY:referenceJoint = </hopejr_right_arm_robot/joints/hand_middle_dip_1_support>
+            float state:angular:physics:position = 0.12823188
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_pinky_mcp_2" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:stiffness = 100
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotY:gearing = -1
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_pinky_pip" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotZ:gearing = -1
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_pinky_dip_1"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_pinky_dip_2_support" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotY:gearing = -1
+            rel physxMimicJoint:rotY:referenceJoint = </hopejr_right_arm_robot/joints/hand_pinky_dip_1_support>
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_pinky_dip_2"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotY:gearing = -1
+            rel physxMimicJoint:rotY:referenceJoint = </hopejr_right_arm_robot/joints/hand_pinky_dip_1_support>
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_ring_mcp_2"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotY:gearing = -1
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_ring_pip"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotZ:gearing = -1
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_ring_dip_1"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_ring_dip_2"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotY:gearing = -1
+            rel physxMimicJoint:rotY:referenceJoint = </hopejr_right_arm_robot/joints/hand_ring_dip_1_support>
+            float state:angular:physics:position = -0.024007834
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_thumb_mcp_2"
+        {
+            float drive:angular:physics:maxForce = 10000
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_ring_dip_2_support" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            rel physxMimicJoint:rotY:referenceJoint = </hopejr_right_arm_robot/joints/hand_ring_dip_1_support>
+            float state:angular:physics:position = 0.000001550914
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_thumb_pip_1_support" (
+            kind = ""
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            float drive:angular:physics:targetPosition = 0
+            string isaac:nameOverride = "hand_thumb_pip_1_support" (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_thumb_pip_1"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotY:gearing = -1
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_thumb_pip_2_support" (
+            kind = ""
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            float drive:angular:physics:targetPosition = 0
+            string isaac:nameOverride = "hand_thumb_pip_2_support" (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_thumb_pip_2"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotY:gearing = -1
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_thumb_dip_support" (
+            kind = ""
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            float drive:angular:physics:targetPosition = 0
+            string isaac:nameOverride = "hand_thumb_dip_support" (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_thumb_dip"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float physxMimicJoint:rotY:gearing = -1
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "shoulder_pitch"
+        {
+            float drive:angular:physics:maxForce = 100000000000000
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "shoulder_yaw"
+        {
+            float drive:angular:physics:maxForce = 100000
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "shoulder_roll"
+        {
+            float drive:angular:physics:maxForce = 100000
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "elbow_flex"
+        {
+            float drive:angular:physics:maxForce = 100000
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "wrist_roll"
+        {
+            float drive:angular:physics:maxForce = 100000
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "wrist_yaw"
+        {
+            float drive:angular:physics:maxForce = 100000
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_wrist_pitch"
+        {
+            float drive:angular:physics:maxForce = 100000
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_index_mcp_2_support"
+        {
+            float drive:angular:physics:maxForce = 10000
+            string isaac:nameOverride = "hand_index_mcp_2_support" (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_middle_mcp_2_support"
+        {
+            float drive:angular:physics:maxForce = 10000
+            string isaac:nameOverride = "hand_middle_mcp_2_support" (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_pinky_mcp_2_support"
+        {
+            float drive:angular:physics:maxForce = 10000
+            string isaac:nameOverride = "hand_pinky_mcp_2_support" (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_ring_mcp_2_support"
+        {
+            float drive:angular:physics:maxForce = 10000
+            string isaac:nameOverride = "hand_ring_mcp_2_support" (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_index_pip_support" (
+            kind = ""
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            float drive:angular:physics:targetPosition = 0
+            string isaac:nameOverride = "hand_index_pip_support" (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_middle_pip_support" (
+            kind = ""
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            float drive:angular:physics:targetPosition = 0
+            string isaac:nameOverride = "hand_middle_pip_support" (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_pinky_pip_support" (
+            kind = ""
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            float drive:angular:physics:targetPosition = 0
+            string isaac:nameOverride = "hand_pinky_pip_support" (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_ring_pip_support" (
+            kind = ""
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            float drive:angular:physics:targetPosition = 0
+            string isaac:nameOverride = "hand_ring_pip_support" (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_middle_dip_1_support" (
+            kind = ""
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            float drive:angular:physics:targetPosition = 0
+            string isaac:nameOverride = "hand_middle_dip_1_support" (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_pinky_dip_1_support" (
+            kind = ""
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            float drive:angular:physics:targetPosition = 0
+            string isaac:nameOverride = "hand_pinky_dip_1_support" (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_ring_dip_1_support" (
+            kind = ""
+        )
+        {
+            float drive:angular:physics:damping = 2
+            float drive:angular:physics:maxForce = 10000
+            float drive:angular:physics:stiffness = 100
+            float drive:angular:physics:targetPosition = 0
+            string isaac:nameOverride = "hand_ring_dip_1_support" (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "hand_middle_mcp_1"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+        }
+
+        over "base_link_fixed"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+        }
+
+        over "hand_pinky_mcp_1"
+        {
+            string isaac:nameOverride (
+                displayName = "Name Override"
+                doc = "Name override for prim lookup in base name search"
+            )
+        }
+    }
+
+    over "base_footprint"
+    {
+    }
+
+    over "base_link"
+    {
+    }
+
+    over "shoulder_yaw"
+    {
+    }
+
+    over "shoulder_roll"
+    {
+    }
+
+    over "upper_elbow"
+    {
+    }
+
+    over "lower_elbow"
+    {
+    }
+
+    over "forearm"
+    {
+    }
+
+    over "hand_base_link"
+    {
+    }
+
+    over "hand_hand"
+    {
+    }
+
+    over "hand_index_mcp_1"
+    {
+    }
+
+    over "hand_index_mcp_2_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_index_mcp_2_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        uniform bool physics:startsAsleep = 0
+        bool physxRigidBody:disableGravity = 1
+
+        over "visuals" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_index_mcp_2"
+    {
+    }
+
+    over "hand_index_pip_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_index_pip_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        bool physxRigidBody:disableGravity = 1
+    }
+
+    over "hand_index_pip"
+    {
+    }
+
+    over "hand_index_dip_1_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_index_dip_1_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        bool physxRigidBody:disableGravity = 1
+    }
+
+    over "hand_index_dip_1"
+    {
+    }
+
+    over "hand_index_dip_2_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_index_dip_2_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        bool physxRigidBody:disableGravity = 1
+    }
+
+    over "hand_index_dip_2"
+    {
+    }
+
+    over "hand_middle_mcp_1"
+    {
+    }
+
+    over "hand_middle_mcp_2_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_middle_mcp_2_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        uniform bool physics:startsAsleep = 0
+        bool physxRigidBody:disableGravity = 1
+
+        over "visuals" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_middle_mcp_2"
+    {
+    }
+
+    over "hand_middle_pip_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_middle_pip_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        bool physxRigidBody:disableGravity = 1
+    }
+
+    over "hand_middle_pip"
+    {
+    }
+
+    over "hand_middle_dip_1_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_middle_dip_1_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        bool physxRigidBody:disableGravity = 1
+    }
+
+    over "hand_middle_dip_1"
+    {
+    }
+
+    over "hand_middle_dip_2_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_middle_dip_2_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        bool physxRigidBody:disableGravity = 1
+    }
+
+    over "hand_middle_dip_2"
+    {
+    }
+
+    over "hand_pinky_mcp_1"
+    {
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+    }
+
+    over "hand_pinky_mcp_2_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_pinky_mcp_2_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        uniform bool physics:startsAsleep = 0
+        bool physxRigidBody:disableGravity = 1
+
+        over "visuals" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_pinky_mcp_2"
+    {
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+    }
+
+    over "hand_pinky_pip_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_pinky_pip_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        bool physxRigidBody:disableGravity = 1
+    }
+
+    over "hand_pinky_pip" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+    )
+    {
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        bool physxRigidBody:disableGravity = 0
+    }
+
+    over "hand_pinky_dip_1_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_pinky_dip_1_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        bool physxRigidBody:disableGravity = 1
+    }
+
+    over "hand_pinky_dip_1" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+    )
+    {
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        bool physxRigidBody:disableGravity = 0
+    }
+
+    over "hand_pinky_dip_2_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_pinky_dip_2_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        bool physxRigidBody:disableGravity = 1
+    }
+
+    over "hand_pinky_dip_2" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+    )
+    {
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        bool physxRigidBody:disableGravity = 0
+    }
+
+    over "hand_ring_mcp_1"
+    {
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+    }
+
+    over "hand_ring_mcp_2_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_ring_mcp_2_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        uniform bool physics:startsAsleep = 0
+        bool physxRigidBody:disableGravity = 1
+
+        over "visuals" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            uniform token physics:approximation = "none"
+            bool physics:collisionEnabled = 1
+        }
+    }
+
+    over "hand_ring_mcp_2"
+    {
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+    }
+
+    over "hand_ring_pip_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_ring_pip_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        bool physxRigidBody:disableGravity = 1
+    }
+
+    over "hand_ring_pip"
+    {
+    }
+
+    over "hand_ring_dip_1_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_ring_dip_1_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        bool physxRigidBody:disableGravity = 1
+    }
+
+    over "hand_ring_dip_1"
+    {
+    }
+
+    over "hand_ring_dip_2_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_ring_dip_2_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        bool physxRigidBody:disableGravity = 1
+    }
+
+    over "hand_ring_dip_2"
+    {
+    }
+
+    over "hand_thumb_mcp_2"
+    {
+    }
+
+    over "hand_thumb_pip_1_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_thumb_pip_1_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        bool physxRigidBody:disableGravity = 1
+    }
+
+    over "hand_thumb_pip_1"
+    {
+    }
+
+    over "hand_thumb_pip_2_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_thumb_pip_2_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        bool physxRigidBody:disableGravity = 1
+    }
+
+    over "hand_thumb_pip_2"
+    {
+    }
+
+    over "hand_thumb_dip_support" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        customData = {
+            dictionary physics = {
+                bool localSpaceVelocities = 0
+            }
+        }
+    )
+    {
+        string isaac:nameOverride = "hand_thumb_dip_support" (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
+        float physics:density = 0
+        float3 physics:diagonalInertia = (0, 0, 0)
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0
+        bool physxRigidBody:disableGravity = 1
+    }
+
+    over "hand_thumb_dip"
+    {
+    }
+
+    over "root_joint"
+    {
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+    variantSet "Physics" = {
+        "None" (
+            prepend references = @./configuration/hopejr_right_arm_base.usd@
+        ) {
+            over "joints" (
+                active = false
+            )
+            {
+            }
+
+        }
+        "PhysX" (
+            prepend payload = @./configuration/hopejr_right_arm_physics.usd@
+        ) {
+
+        }
+    }
+    variantSet "Sensor" = {
+        "None" {
+
+        }
+        "Sensors" (
+            prepend payload = @./configuration/hopejr_right_arm_sensor.usd@
+        ) {
+
+        }
+    }
+    variantSet "Robot" = {
+        "None" {
+
+        }
+        "Robot" (
+            prepend payload = @./configuration/hopejr_right_arm_robot.usd@
+        ) {
+
+        }
+    }
+}
+
+def "Render" (
+    hide_in_stage_window = true
+    no_delete = true
+)
+{
+    def "OmniverseKit"
+    {
+        def "HydraTextures" (
+            hide_in_stage_window = true
+            no_delete = true
+        )
+        {
+            def RenderProduct "omni_kit_widget_viewport_ViewportTexture_0" (
+                prepend apiSchemas = ["OmniRtxSettingsCommonAdvancedAPI_1", "OmniRtxSettingsRtAdvancedAPI_1", "OmniRtxSettingsPtAdvancedAPI_1", "OmniRtxPostColorGradingAPI_1", "OmniRtxPostChromaticAberrationAPI_1", "OmniRtxPostBloomPhysicalAPI_1", "OmniRtxPostMatteObjectAPI_1", "OmniRtxPostCompositingAPI_1", "OmniRtxPostDofAPI_1", "OmniRtxPostMotionBlurAPI_1", "OmniRtxPostTvNoiseAPI_1", "OmniRtxPostTonemapIrayReinhardAPI_1", "OmniRtxPostDebugSettingsAPI_1", "OmniRtxDebugSettingsAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                rel camera = </OmniverseKit_Persp>
+                token omni:rtx:background:source:texture:textureMode = "repeatMirrored"
+                token omni:rtx:background:source:type = "domeLight"
+                bool omni:rtx:dlss:frameGeneration = 0
+                bool omni:rtx:material:db:nonVisualMaterialCSV:enabled = 0
+                bool omni:rtx:material:db:syncLoads = 1
+                token omni:rtx:post:dlss:execMode = "performance"
+                bool omni:rtx:post:registeredCompositing:invertColorCorrection = 1
+                bool omni:rtx:post:registeredCompositing:invertToneMap = 1
+                bool omni:rtx:pt:lightcache:cached:dontResolveConflicts = 1
+                int omni:rtx:pt:maxSamplesPerLaunch = 2073600
+                int omni:rtx:pt:mgpu:maxPixelsPerRegionExponent = 12
+                color3f omni:rtx:rt:ambientLight:color = (0.1, 0.1, 0.1)
+                bool omni:rtx:rt:demoire = 0
+                bool omni:rtx:rt:ecoMode:enabled
+                bool omni:rtx:rt:lightcache:spatialCache:dontResolveConflicts = 1
+                bool omni:rtx:scene:hydra:materialSyncLoads = 1
+                bool omni:rtx:scene:hydra:mdlMaterialWarmup = 1
+                uint omni:rtx:viewTile:limit = 4294967295
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (1280, 720)
+            }
+        }
+    }
+
+    def RenderSettings "OmniverseGlobalRenderSettings" (
+        prepend apiSchemas = ["OmniRtxSettingsGlobalRtAdvancedAPI_1", "OmniRtxSettingsGlobalPtAdvancedAPI_1"]
+        no_delete = true
+    )
+    {
+        rel products = </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_0>
+    }
+
+    def "Vars"
+    {
+        def RenderVar "LdrColor" (
+            hide_in_stage_window = true
+            no_delete = true
+        )
+        {
+            uniform string sourceName = "LdrColor"
+        }
+    }
+}
+
